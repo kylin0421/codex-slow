@@ -115,7 +115,7 @@ do_tick() {
 
 	mkdir -p "$state_dir" 2>/dev/null
 	stamp=$(date -u +%Y-%m-%dT%H:%M:%SZ 2>/dev/null)
-	printf '%s\t%s\n' "${stamp:-?}" "$delay" >>"$log_file" 2>/dev/null
+	printf '%s at %ss\n' "${stamp:-?}" "$delay" >>"$log_file" 2>/dev/null
 	if [ -f "$log_file" ]; then
 		tail -n 200 "$log_file" >"$log_file.tmp" 2>/dev/null &&
 			mv "$log_file.tmp" "$log_file" 2>/dev/null

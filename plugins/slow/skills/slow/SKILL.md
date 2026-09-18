@@ -13,13 +13,22 @@ The pause is enforced by the `PreToolUse` and `UserPromptSubmit` hooks this
 plugin installs. This skill only edits the setting the hook reads; it must not
 try to simulate slowness itself.
 
-## Runner
+## Find the runner
 
-Locate this skill's own directory (Codex reports the path when it loads the
-skill). The plugin root is two levels up: `<plugin root>/skills/slow` →
-`<plugin root>`.
+The plugin root is the directory holding `scripts/slow.ps1` and
+`scripts/slow.sh`. Codex reports this skill's path when it loads the skill, and
+the plugin root sits two levels above `skills/slow` — but the reported path is
+easy to mistype, so verify it in one step instead of trusting it:
 
-Then use the runner for the host platform:
+- Windows:
+  `Get-ChildItem "$env:USERPROFILE\.codex\plugins\cache" -Recurse -Filter slow.ps1 | Select-Object -First 1 -ExpandProperty FullName`
+- macOS / Linux:
+  `find "$HOME/.codex/plugins/cache" -name slow.sh -print -quit`
+
+A directory on disk is the only thing this skill needs; do not read the manifest
+or explore the plugin tree beyond that one lookup.
+
+Then run it:
 
 - Windows:
   `powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "<plugin root>\scripts\slow.ps1" <args>`

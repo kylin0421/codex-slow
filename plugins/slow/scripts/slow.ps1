@@ -105,7 +105,7 @@ switch ($Command.ToLowerInvariant()) {
         if (-not (Test-Positive $delay)) { exit 0 }
         if (-not (Test-Path -LiteralPath $stateDir)) { New-Item -ItemType Directory -Path $stateDir -Force | Out-Null }
         $stamp = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
-        Add-Content -LiteralPath $logFile -Value "$stamp`t$delay"
+        Add-Content -LiteralPath $logFile -Value "$stamp at ${delay}s"
         if (Test-Path -LiteralPath $logFile) {
             Get-Content -LiteralPath $logFile -Tail 200 | Set-Content -LiteralPath $logFile -Encoding ascii
         }
