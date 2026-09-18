@@ -1,0 +1,37 @@
+{
+  "name": "slow",
+  "version": "0.1.0",
+  "description": "Manual slow mode for Codex: pause between steps so tokens burn slower and you get room to think.",
+  "skills": "./skills/",
+  "author": {
+    "name": "Linxiang Su",
+    "url": "https://github.com/kylin0421"
+  },
+  "homepage": "https://github.com/kylin0421/codex-slow",
+  "repository": "https://github.com/kylin0421/codex-slow",
+  "license": "MIT",
+  "keywords": [
+    "slow",
+    "pacing",
+    "hooks",
+    "token-usage",
+    "focus"
+  ],
+  "interface": {
+    "displayName": "Slow",
+    "shortDescription": "Pause Codex between steps on purpose",
+    "longDescription": "Slow adds a configurable pause before every tool call and every user prompt. Turn it on when you want a session to burn tokens more slowly, keep more room to think between steps, or simply step away without the work racing ahead. Default delay is 5 seconds; the setting lives in a small text file you can edit by hand.",
+    "developerName": "Linxiang Su",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "websiteURL": "https://github.com/kylin0421/codex-slow",
+    "defaultPrompt": [
+      "Slow down: pause 5s before each step",
+      "Set slow mode to 15 seconds",
+      "Turn slow mode off"
+    ],
+    "brandColor": "#4C6EF5"
+  }
+}

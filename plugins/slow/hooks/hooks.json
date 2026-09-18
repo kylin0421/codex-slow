@@ -1,0 +1,30 @@
+{
+  "description": "Codex Slow: sleep for the configured delay before each tool call and each user prompt.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${PLUGIN_ROOT}/scripts/slow.sh\"",
+            "commandWindows": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"${PLUGIN_ROOT}\\scripts\\slow.ps1\"",
+            "timeout": 900
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${PLUGIN_ROOT}/scripts/slow.sh\"",
+            "commandWindows": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"${PLUGIN_ROOT}\\scripts\\slow.ps1\"",
+            "timeout": 900
+          }
+        ]
+      }
+    ]
+  }
+}
