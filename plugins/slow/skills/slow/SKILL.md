@@ -7,7 +7,7 @@ description: Turn Codex's manual slow mode on, off, or to a specific delay, and 
 
 Slow mode inserts a configurable pause before every tool call and before every
 user prompt. It exists so a session burns tokens more slowly and so the human
-keeps room to think — or to walk away — while the work continues.
+keeps room to think, or to walk away, while the work continues.
 
 The pause is enforced by the `PreToolUse` and `UserPromptSubmit` hooks this
 plugin installs. This skill only edits the setting the hook reads; it must not
@@ -17,13 +17,13 @@ try to simulate slowness itself.
 
 The plugin root is the directory holding `scripts/slow.ps1` and
 `scripts/slow.sh`. Codex reports this skill's path when it loads the skill, and
-the plugin root sits two levels above `skills/slow` — but the reported path is
+the plugin root sits two levels above `skills/slow`, but the reported path is
 easy to mistype, so verify it in one step instead of trusting it:
 
 - Windows:
-  `Get-ChildItem "$env:USERPROFILE\.codex\plugins\cache" -Recurse -Filter slow.ps1 | Select-Object -First 1 -ExpandProperty FullName`
+  `$root = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $env:USERPROFILE '.codex' }; Get-ChildItem (Join-Path $root 'plugins\cache') -Recurse -Filter slow.ps1 | Select-Object -First 1 -ExpandProperty FullName`
 - macOS / Linux:
-  `find "$HOME/.codex/plugins/cache" -name slow.sh -print -quit`
+  `find "${CODEX_HOME:-$HOME/.codex}/plugins/cache" -name slow.sh -print -quit`
 
 A directory on disk is the only thing this skill needs; do not read the manifest
 or explore the plugin tree beyond that one lookup.

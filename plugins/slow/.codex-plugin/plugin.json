@@ -1,6 +1,6 @@
 {
   "name": "slow",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Manual slow mode for Codex: pause between steps so tokens burn slower and you get room to think.",
   "skills": "./skills/",
   "author": {
