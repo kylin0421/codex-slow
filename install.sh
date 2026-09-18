@@ -22,5 +22,6 @@ Installed.
 
 Next:
   1. Run /hooks once and trust the slow hook (plugin hooks are skipped until trusted).
-  2. In a new session, run /slow to turn slow mode on, /slow 10 for ten seconds, /slow off to stop.
+  2. In a new session, type $slow and send to turn slow mode on, $slow 10 for ten
+     seconds, $slow off to stop. Codex skills are $ mentions, not slash commands.
 EOF

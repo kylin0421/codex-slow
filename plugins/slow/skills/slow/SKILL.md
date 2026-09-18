@@ -1,6 +1,6 @@
 ---
 name: slow
-description: Turn Codex's manual slow mode on, off, or to a specific delay, and report its status. Use whenever the user asks to slow Codex down, pace or stretch out token usage, pause between steps, take a breather, or types /slow or $slow.
+description: Turn Codex's manual slow mode on, off, or to a specific delay, and report its status. Use whenever the user asks to slow Codex down, pace or stretch out token usage, pause between steps, take a breather, or invokes the slow skill ($slow).
 ---
 
 # Slow
@@ -12,6 +12,11 @@ keeps room to think, or to walk away, while the work continues.
 The pause is enforced by the `PreToolUse` and `UserPromptSubmit` hooks this
 plugin installs. This skill only edits the setting the hook reads; it must not
 try to simulate slowness itself.
+
+Codex exposes skills through `$` mentions and `/skills`; the `/` menu only holds
+built-in commands. If the user typed `/slow` and got `Unrecognized command`,
+that input never reached you: tell them to use `$slow` (or `/skills`) instead of
+guessing what they meant.
 
 ## Find the runner
 
